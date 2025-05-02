@@ -6,7 +6,7 @@
     border: none;
     cursor: pointer;
     align-self: center;
-    padding: 0;
+    padding: 8px;
     color: var(--color-blue-50);
     text-decoration: none;
   }

@@ -5,6 +5,7 @@ import {
   formatPriceDetailed,
   formatTimes,
 } from "../utils/formatters";
+import "./CourseTile.css";
 
 interface Props {
   item: ClassItem;

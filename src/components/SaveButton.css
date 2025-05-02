@@ -1,0 +1,28 @@
+.save-course {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    padding: 0;
+    color: var(--color-blue-50);
+    text-decoration: none;
+  }
+  
+  .save-course:hover span {
+    text-decoration: underline;
+  }
+  
+  .save-course svg {
+    flex-shrink: 0;
+  }
+  
+  /* remove focus ring */
+  .save-course,
+  .save-course:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  

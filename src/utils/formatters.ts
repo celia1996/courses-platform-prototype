@@ -2,31 +2,43 @@ export function formatDatesDetailed(
   dates: [number, number][],
   tz: string
 ): string {
-  const dateFmt = (ts: number, opts: Intl.DateTimeFormatOptions) =>
-    new Intl.DateTimeFormat("en-US", { timeZone: tz, ...opts }).format(
-      new Date(ts * 1000)
-    );
+  const dayFmt = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    timeZone: tz,
+  });
+  const monthFmt = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    timeZone: tz,
+  });
+  const numFmt = new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    timeZone: tz,
+  });
 
-  return dates
-    .map(([start, end]) => {
-      const startDay = dateFmt(start, { weekday: "long" });
-      const endDay = dateFmt(end, { weekday: "long" });
-      const startMD = dateFmt(start, { month: "long", day: "numeric" });
-      const endMD = dateFmt(end, { month: "long", day: "numeric" });
+  const toParts = (ts: number) => {
+    const d = new Date(ts * 1000);
+    return {
+      dayName: dayFmt.format(d),
+      monthName: monthFmt.format(d),
+      dayNum: numFmt.format(d),
+    };
+  };
 
-      // Same day
-      if (startDay === endDay && startMD === endMD) {
-        return `${startDay}, ${startMD}`;
-      }
-      if (startDay !== endDay && startMD.split(" ")[0] === endMD.split(" ")[0]) {
-        const [, startDayOfMonth] = startMD.split(" ");
-        const [, endDayOfMonth] = endMD.split(" ");
-        return `${startDay} & ${endDay}, ${startDayOfMonth} & ${endDayOfMonth}`;
-      }
-      return `${startDay}, ${startMD} & ${endDay}, ${endMD}`;
-    })
-    .join(" / ");
+  if (dates.length === 1) {
+    const { dayName, monthName, dayNum } = toParts(dates[0][0]);
+    return `${dayName}, ${monthName} ${dayNum}`;
+  }
+
+  const [{ 0: startTs }, { 0: endTs }] = dates;
+  const start = toParts(startTs);
+  const end = toParts(endTs);
+
+  if (start.monthName === end.monthName) {
+    return `${start.dayName} & ${end.dayName}, ${start.monthName} ${start.dayNum} & ${end.dayNum}`;
+  }
+  return `${start.dayName}, ${start.monthName} ${start.dayNum} & ${end.dayName}, ${end.monthName} ${end.dayNum}`;
 }
+
 export function formatPriceDetailed(
   amount: number,
   currency: string,
@@ -46,10 +58,7 @@ export function formatPriceDetailed(
 
   return `${price} Until ${validStr}`;
 }
-export function formatTimes(
-  dates: [number, number][],
-  tz: string
-): string {
+export function formatTimes(dates: [number, number][], tz: string): string {
   const fmt = (ts: number) =>
     new Intl.DateTimeFormat("en-US", {
       timeZone: tz,

@@ -1,42 +1,39 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import "./styles/theme.css";
+
+html,
+body {
+  font-family: var(--font-family-base);
+}
+
+.content-container {
+  margin: 32px 24px;
+}
+
+.enroll-button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: var(--color-primary-60);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: var(--font-heading-medium-size);
+  line-height: var(--font-heading-medium-line-height);
+  font-weight: var(--font-heading-medium-weight);
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.enroll-button:hover:enabled {
+  background-color: var(--color-primary-40);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.enroll-button:focus {
+  outline: none;
+  box-shadow: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.enroll-button:focus-visible {
+  outline: 2px solid var(--color-primary-20);
+  outline-offset: 2px;
 }

@@ -30,13 +30,15 @@ export const CourseTile: React.FC<Props> = ({ item, selectedId, onSelect }) => {
       onClick={() => onSelect(item.id)}
     >
       <div className="course-card__header">
-        <input
-          type="radio"
-          id={`class-${item.id}`}
-          name="class"
-          checked={isSelected}
-          onChange={() => onSelect(item.id)}
-        />
+        <div className="radio-wrapper">
+          <input
+            type="radio"
+            id={`class-${item.id}`}
+            name="class"
+            checked={isSelected}
+            onChange={() => onSelect(item.id)}
+          />
+        </div>
         <div className="text-heading-small text-primary-30">Virtual Course</div>
       </div>
       <div className="course-card__body">

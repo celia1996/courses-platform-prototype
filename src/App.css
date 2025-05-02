@@ -1,5 +1,10 @@
 @import "./styles/theme.css";
 
+html,
+body {
+  font-family: var(--font-family-base);
+}
+
 .content-container {
   margin: 32px 24px;
 }

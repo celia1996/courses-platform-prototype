@@ -17,12 +17,15 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Hover state */
 .course-card:hover {
   border-color: var(--color-primary-30);
   box-shadow: 0 0 0 2px var(--color-primary-30);
 }
 
+.course-card:focus-visible {
+  outline: 4px solid var(--color-blue-50);
+  outline-offset: -2px;
+}
 /* ------------------------------ */
 /*  Course Card Header           */
 /* ------------------------------ */
@@ -43,6 +46,11 @@
   width: 26px;
   height: 26px;
   accent-color: var(--color-blue-50);
+}
+
+.radio-wrapper input[type="radio"]:focus-visible {
+  outline: 2px solid var(--color-blue-50);
+  outline-offset: 2px;
 }
 /* ------------------------------ */
 /*  Course Card Body             */

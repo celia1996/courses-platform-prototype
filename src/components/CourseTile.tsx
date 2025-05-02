@@ -24,6 +24,7 @@ export const CourseTile: React.FC<Props> = ({ item, selectedId, onSelect }) => {
   return (
     <label
       role="radio"
+      tabIndex={0}
       aria-checked={isSelected}
       htmlFor={`class-${item.id}`}
       className={`course-card${isSelected ? " selected" : ""}`}

@@ -31,23 +31,23 @@ Built with TypeScript, Vite, Tailwind-like CSS variables, and the [Intl API](htt
 
 2. **Install dependencies**
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. **Launch the dev server**
 
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
 4. Open in browser at http://localhost:5173/
 
 ### Build for production
 
-```bash
-npm run build
-```
+   ```bash
+   npm run build
+   ```
 
 ## Author
 
